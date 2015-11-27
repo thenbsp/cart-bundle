@@ -1,0 +1,20 @@
+parameters:
+    thenbsp_cart.session_storage.class: Thenbsp\CartBundle\Storage\SessionStorage
+    thenbsp_cart.utils_currency.class: Thenbsp\CartBundle\Utils\CurrencyUtils
+    thenbsp_cart.class: Thenbsp\CartBundle\Core\CartManager
+
+services:
+    thenbsp_cart.session_storage:
+        class: %thenbsp_cart.session_storage.class%
+        arguments:
+            - @session
+    thenbsp_cart.utils_currency:
+        class: %thenbsp_cart.utils_currency.class%
+        arguments:
+            - %thenbsp_cart.currency%
+    thenbsp_cart:
+        class: %thenbsp_cart.class%
+        arguments:
+            - @event_dispatcher
+            - @thenbsp_cart.session_storage
+            - @thenbsp_cart.utils_currency
