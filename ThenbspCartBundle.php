@@ -1,6 +1,6 @@
 <?php
 
-namespace ThenbspCartBundle;
+namespace Thenbsp\CartBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

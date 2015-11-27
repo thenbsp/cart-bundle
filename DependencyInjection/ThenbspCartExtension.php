@@ -1,6 +1,6 @@
 <?php
 
-namespace ThenbspCartBundle\DependencyInjection;
+namespace Thenbsp\CartBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;

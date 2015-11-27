@@ -3,7 +3,7 @@
 ## 安装
 
 ```
-composer thenbsp/cart-bundle
+composer require thenbsp/cart-bundle
 ```
 
 ## 配置
@@ -19,11 +19,9 @@ class AppKernel extends Kernel
     {
         $bundles = array(
             // ...
-            new Thenbsp\CartBundle(),
+            new Thenbsp\CartBundle\ThenbspCartBundle(),
         );
     }
-    
-    // ...
 }
 ```
 
