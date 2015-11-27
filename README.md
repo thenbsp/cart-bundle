@@ -199,7 +199,7 @@ class Product implements EntityInterface, \Serializable
 ## 使用
 
 ```php
-$cart = $this->get('cart.manager');
+$cart = $this->get('thenbsp_cart');
 ```
 
 方法|说明|返回|异常
