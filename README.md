@@ -12,6 +12,7 @@ composer require thenbsp/cart-bundle
 
 ```php
 // app/AppKernel.php
+
 public function registerBundles()
 {
     return array(
@@ -30,8 +31,6 @@ public function registerBundles()
 :---|:---
 getId()|获取商品唯一标识，比如 ID、token 等
 getPrice()|获取商品单价，即最终价格（float 类型）
-
-实现 ``Thenbsp\CartBundle\Core\EntityInterface`` 接口：
 
 ```php
 // src/AppBundle/Entity/Product.php
@@ -88,17 +87,17 @@ class Product implements EntityInterface
 $cart = $this->get('thenbsp_cart');
 ```
 
-方法|说明|返回|异常
-:---|:---|:---|:---
-$cart->addItem($entity, $quantity);|添加商品到购物车|null|\InvalidArgumentException
-$cart->hasItem($entityOrId);|检测购物车中是否包含某个商品|boolean|-
-$cart->removeItem($entityOrId);|从购物车中移除某商品|null|-
-$cart->getItems();|获取购物车的全部商品|array|-
-$cart->count();|获取购物车中的商品个数|integer|-
-$cart->total();|获取购物车中的商品总计|float|-
-$cart->totalFormated();|格式化购物车中的商品总计|string|-
-$cart->isEmpty();|检测购物车是否为空|boolean|-
-$cart->clear();|清空购物车|null|-
+方法|说明|返回
+:---|:---|:---
+$cart->addItem($entity, $quantity);|添加商品到购物车|null
+$cart->hasItem($entityOrId);|检测购物车中是否包含某个商品|boolean
+$cart->removeItem($entityOrId);|从购物车中移除某商品|null
+$cart->getItems();|获取购物车的全部商品|array
+$cart->count();|获取购物车中的商品个数|integer
+$cart->total();|获取购物车中的商品总计|float
+$cart->totalFormated();|格式化购物车中的商品总计|string
+$cart->isEmpty();|检测购物车是否为空|boolean
+$cart->clear();|清空购物车|null
 
 ## 事件
 
