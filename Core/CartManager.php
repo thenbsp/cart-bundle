@@ -38,10 +38,7 @@ class CartManager implements CartManagerInterface
     /**
      * 构造方法
      */
-    public function __construct(
-        EventDispatcherInterface $dispatcher,
-        StorageInterface $storage,
-        CurrencyUtils $currencyUtils)
+    public function __construct(EventDispatcherInterface $dispatcher, StorageInterface $storage, CurrencyUtils $currencyUtils)
     {
         $this->storage          = $storage;
         $this->dispatcher       = $dispatcher;
