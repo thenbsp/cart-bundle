@@ -12,16 +12,13 @@ composer require thenbsp/cart-bundle
 
 ```php
 // app/AppKernel.php
-
-class AppKernel extends Kernel
+public function registerBundles()
 {
-    public function registerBundles()
-    {
-        $bundles = array(
-            // ...
-            new Thenbsp\CartBundle\ThenbspCartBundle(),
-        );
-    }
+    return array(
+        // ...
+        new Thenbsp\CartBundle\ThenbspCartBundle()
+        // ...
+    );
 }
 ```
 
@@ -33,40 +30,6 @@ class AppKernel extends Kernel
 :---|:---
 getId()|获取商品唯一标识，比如 ID、token 等
 getPrice()|获取商品单价，即最终价格（float 类型）
-
-假设你的商品实体为：
-
-```php
-// src/AppBundle/Entity/Product.php
-
-use Doctrine\ORM\Mapping AS ORM;
-
-/**
- * @ORM\Entity
- * @ORM\Table(name="products")
- */
-class Product
-{
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-    /**
-     * @ORM\Column(type="decimal", precision=10, scale=2)
-     */
-    protected $price;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    protected $description;
-    
-    // ...
-}
-```
 
 实现 ``Thenbsp\CartBundle\Core\EntityInterface`` 接口：
 
@@ -118,81 +81,6 @@ class Product implements EntityInterface
     // ...
 }
 ```
-
-默认情问下，购物车会存放商品所有的信息，如果需要指定购物车中存放的商品信息，可以通过实现 Serializable 接口：
-
-```php
-// src/AppBundle/Entity/Product.php
-
-use Doctrine\ORM\Mapping AS ORM;
-use Thenbsp\CartBudnle\Core\EntityInterface;
-
-/**
- * @ORM\Entity
- * @ORM\Table(name="products")
- */
-class Product implements EntityInterface, \Serializable
-{
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-    /**
-     * @ORM\Column(type="decimal", precision=10, scale=2)
-     */
-    protected $price;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    protected $description;
-
-    /**
-     * 返回商品唯一标识
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * 返回商品单价
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-    
-    /**
-     * 序列化
-     */
-    public function serialize()
-    {
-        return serialize(array(
-            $this->id,
-            $this->price
-        ));
-    }
-
-    /**
-     * 反序列化
-     */
-    public function unserialize($serialized)
-    {
-        list(
-            $this->id,
-            $this->price
-        ) = unserialize($serialized);
-    }
-
-    // ...
-}
-```
-
-> 注意：如果指定了购物车中的商品信息，购物车中的商品则只能获取到所指定的信息，如上例中，购物车中的商中的 description 将为 null。
 
 ## 使用
 
