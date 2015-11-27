@@ -204,7 +204,7 @@ $cart = $this->get('thenbsp_cart');
 
 方法|说明|返回|异常
 :---|:---|:---|:---
-$cart->addItem($entity, $quantity);|添加商品到购物车|null|-
+$cart->addItem($entity, $quantity);|添加商品到购物车|null|\InvalidArgumentException
 $cart->hasItem($entityOrId);|检测购物车中是否包含某个商品|boolean|-
 $cart->removeItem($entityOrId);|从购物车中移除某商品|null|-
 $cart->getItems();|获取购物车的全部商品|array|-
