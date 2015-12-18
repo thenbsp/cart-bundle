@@ -131,8 +131,10 @@ class CartListener implements EventSubscriberInterface
     {
         // 被添加到购物车的商品对象
         $entity = $event->getEntity();
+
         // 商品的数量
         $quantity = $event->getQuantity();
+
         // 如果商品状态为 “已禁用”，则不添加到购物车
         if( $entity->getStatus() === 'disabled' ) {
             $event->stopPropagation();
