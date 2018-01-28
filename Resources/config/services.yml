@@ -5,16 +5,16 @@ parameters:
 
 services:
     thenbsp_cart.session_storage:
-        class: '%thenbsp_cart.session_storage.class%'
+        class: "%thenbsp_cart.session_storage.class%"
         arguments:
-            - '@session'
+            - "@session"
     thenbsp_cart.utils_currency:
-        class: '%thenbsp_cart.utils_currency.class%'
+        class: "%thenbsp_cart.utils_currency.class%"
         arguments:
-            - '%thenbsp_cart.currency%'
+            - "%thenbsp_cart.currency%"
     thenbsp_cart:
-        class: '%thenbsp_cart.class%'
+        class: "%thenbsp_cart.class%"
         arguments:
-            - '@event_dispatcher'
-            - '@thenbsp_cart.session_storage'
-            - '@thenbsp_cart.utils_currency'
+            - "@event_dispatcher"
+            - "@thenbsp_cart.session_storage"
+            - "@thenbsp_cart.utils_currency"
